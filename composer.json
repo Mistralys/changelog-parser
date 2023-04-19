@@ -1,0 +1,36 @@
+{
+  "name": "mistralys/changelog-parser",
+  "description": "PHP library to parse Markdown-formatted change log files.",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sebastian Mordziol",
+      "email": "s.mordziol@mistralys.eu",
+      "role": "lead"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "src"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestClasses"
+      ]
+  },
+  "require": {
+    "mistralys/application-utils": "^2.3.2",
+    "mistralys/version-parser": "^1.0",
+    "ext-json": "*",
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpstan/phpstan": ">=1.9.2",
+    "phpstan/phpstan-phpunit": ">=1.3.11",
+    "phpunit/phpunit": ">=9.5.26"
+  }
+}
