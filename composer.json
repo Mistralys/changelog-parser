@@ -23,7 +23,7 @@
   },
   "require": {
     "mistralys/application-utils": "^2.3.2",
-    "mistralys/version-parser": "^1.0",
+    "mistralys/version-parser": "^2.0",
     "ext-json": "*",
     "php": ">=7.4"
   },
