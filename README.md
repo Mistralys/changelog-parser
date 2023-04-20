@@ -68,6 +68,10 @@ All the following headings are valid formats that the parser will recognize:
 # 5.0 ~ Optional version label
 ```
 
+For more information on the spectrum of version strings that can be used,
+have a look at the supported formats in the [mistralys/version-parser](https://github.com/Mistralys/version-parser#supported-version-strings) 
+package, which is used to read them. 
+
 ### Nesting the changelog in a document
 
 The way the parser analyzes the Markdown document means that the
@@ -241,9 +245,17 @@ instead of parsing the source file each time.
 ```php
 use Mistralys\ChangelogParser\ChangelogParser;
 
-$json = ChangelogParser::parseMarkdownFile('changelog.md')->toJSON();
+if(!file_exists('changelog.json'))
+{
+    $changelog = ChangelogParser::parseMarkdownFile('changelog.md');
+    $changelog->toJSONFile('changelog.json');
+}
+else
+{
+    $changelog = ChangelogParser::parseJSONFile('changelog.json');
+}
 ```
 
-> TIP: Loading changelog information from serialized JSON performs
-> better than parsing the source markdown file, especially for large
-> files. It is recommended to use this as a way of caching the information.
+This example will automatically create a JSON cache file, which performs
+better than parsing the source markdown file each time, especially for large
+files. 
