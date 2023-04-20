@@ -10,10 +10,13 @@ declare(strict_types=1);
 namespace Mistralys\ChangelogParser;
 
 use AppUtils\FileHelper\FileInfo;
+use AppUtils\FileHelper\JSONFile;
 use AppUtils\FileHelper_Exception;
 use AppUtils\OperationResult;
 use JsonException;
+use Mistralys\ChangelogParser\Reader\JSONChangelogReader;
 use Mistralys\ChangelogParser\Reader\MarkdownChangelogReader;
+use Mistralys\VersionParser\VersionParser;
 
 /**
  * Main entry point for parsing changelog files. Use the
@@ -46,6 +49,8 @@ class ChangelogParser extends OperationResult
     }
 
     /**
+     * Parses a Markdown document and extracts changelog information.
+     *
      * @param string|FileInfo $file
      * @return ChangelogParser
      * @throws FileHelper_Exception
@@ -144,7 +149,7 @@ class ChangelogParser extends OperationResult
 
         foreach($versions as $version)
         {
-            $result[] = $version->getNumber();
+            $result[] = $version->getVersionInfo()->getTagVersion();
         }
 
         return $result;
@@ -158,6 +163,33 @@ class ChangelogParser extends OperationResult
     public function toJSON() : string
     {
         return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * Stores the changelog data in a JSON file to be read again later
+     * via {@see self::parseJSONFile()}.
+     *
+     * @param string $filePath
+     * @param bool $pretty
+     * @return JSONFile
+     * @throws FileHelper_Exception
+     */
+    public function toJSONFile(string $filePath, bool $pretty=false) : JSONFile
+    {
+        return JSONFile::factory($filePath)->putData($this->toArray(), $pretty);
+    }
+
+    /**
+     * Parses a file containing JSON data previously saved by.
+     *
+     * @param string|JSONFile $file
+     * @return ChangelogParser
+     * @throws FileHelper_Exception
+     * @throws JsonException
+     */
+    public static function parseJSONFile($file) : ChangelogParser
+    {
+        return new self(JSONChangelogReader::createFromFile(JSONFile::factory($file)));
     }
 
     /**
