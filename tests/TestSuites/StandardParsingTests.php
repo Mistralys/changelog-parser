@@ -11,9 +11,22 @@ final class StandardParsingTests extends ChangelogParserTestCase
 {
     public function test_parse() : void
     {
-        $versions = $this->createStandardChangelogParser()->getVersions();
+        $parser = $this->createStandardChangelogParser();
+        $versions = $parser->getVersions();
 
-        $this->assertCount(5, $versions);
+        $this->assertCount(6, $versions);
+
+        $this->assertSame(
+            array(
+                '4.0.0-alpha',
+                '14.5.9-snapshot5',
+                '14.5.8',
+                '14.5.7',
+                '14.5.7-beta2',
+                '14.5.6'
+            ),
+            $parser->getVersionNumbers()
+        );
     }
 
     public function test_lastVersion() : void
