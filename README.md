@@ -12,9 +12,11 @@ PHP library to parse Markdown-formatted change log files.
 
 Add the package to your `composer.json` file with the following command:
 
-```
+```shell
 composer require mistralys/changelog-parser
 ```
+
+Also see the [Packagist page](https://packagist.org/packages/mistralys/changelog-parser).
 
 ## Supported changelog formats
 
