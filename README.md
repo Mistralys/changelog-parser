@@ -61,6 +61,8 @@ All the following headings are valid formats that the parser will recognize:
 
 # 1.2.3-ALPHA
 
+# 1.2.3-BranchName-SNAPSHOT
+
 # 5.0 - Optional version label
 
 # 5.0 | Optional version label
