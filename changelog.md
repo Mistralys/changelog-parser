@@ -1,3 +1,6 @@
+## v1.0.3 - Parser tweak
+- Parser: Added backtick support for change categories, e.g. \`(C)\`.
+
 ## v1.0.2 - Relaxed dependency constraints
 - Dependencies: Relaxed AppUtils version restrictions for more flexibility.
 
