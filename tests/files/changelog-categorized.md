@@ -6,8 +6,8 @@
 - ( ) Heading: Added the heading content.
 
 ### v1.1.5
-- {C} ServiceBlock: Implemented the contact options.
-- (C) TextStage: Fixed the header text not being valigned middle.
+- `{C}` ServiceBlock: Implemented the contact options.
+- `(C)` TextStage: Fixed the header text not being valigned middle.
 - (G) Header bar: Fixed it not being shown when no teasers are present.
 - {G} Header bar: Added support for integrating it elsewhere.
 - ( ) Header bar: Added color and layout styles [Link label](https://mistralys.eu).
