@@ -100,7 +100,7 @@ class MarkdownChangelogReader extends BaseReader
     {
         preg_match('/v?([0-9.]+[0-9A-Z._\-]*) (.*)|v?([0-9.]+[0-9A-Z._\-]*)/six', $line, $matches);
 
-        // Detect a version line, regardless of the amount of hashes
+        // Detect a version line, regardless of the number of hashes
         if(!empty($matches[0]))
         {
             $version = $matches[1];
@@ -160,7 +160,7 @@ class MarkdownChangelogReader extends BaseReader
      */
     private function parseEntry(string $line, ChangelogVersion $version) : void
     {
-        preg_match_all('/\A- ([{(])([CG ])([})])([^:]*):(.*)\z/i', $line, $matches);
+        preg_match_all('/\A- `*([{(])([CG ])([})])`*([^:]*):(.*)\z/i', $line, $matches);
 
         // Entry with brackets, e.g.
         // - {G} Category: Text
