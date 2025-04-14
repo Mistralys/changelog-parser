@@ -1,4 +1,4 @@
-## v1.0.3 - Parser tweak
+## v1.0.3 - Category backticks
 - Parser: Added backtick support for change categories, e.g. \`(C)\`.
 - Docs: Added docs on using change category symbols.
 
