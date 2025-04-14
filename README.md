@@ -144,6 +144,61 @@ This will output:
 - Renamed all files
 ```
 
+### Categorized changes
+
+#### Introduction
+
+The parser also supports categorized changes, which are a way to 
+mark changes by type. Entries can be prepended with symbols that
+define what kind of change they are, with two criticality levels:
+Optional and mandatory.
+
+The idea is to mark changes that require users to take action with
+a new version, declare which ones are optional, and categorize them
+by the components that were modified. 
+
+#### Supported symbols
+
+The parser handles the following symbols:
+
+- `{ }` - Global change, optional
+- `( )` - Global change, mandatory
+- `{C}` - Component change, optional
+- `(C)` - Component change, mandatory
+
+For component-related changes, the name of the component is expected
+to come directly after the symbol, and the description of the change
+separated by a colon.
+
+#### Example
+
+```markdown
+# v1.1.0 Tweaks
+- ( ) The supported image format was changed to JPG only.
+- (C) Image Reader: Added support for JPG images.
+- {C} Image Reader: Added PNG image conversion. 
+```
+
+This version contains three changes, two of which are mandatory,
+requiring special attention when updating. The third is optional.
+
+> Note: Optional changes do not necessarily need to be marked with a 
+> symbol, but it has the advantage of using the component name to group 
+> changes by component.
+
+#### Backticks for symbols
+
+To make the changelogs nicer to read, the parser supports using 
+backticks for the symbols. With a monospaced font, they are better
+aligned and easier to read. 
+
+```markdown
+# v1.1.0 Tweaks
+- `( )` The supported image format was changed to JPG only.
+- `(C)` Image Reader: Added support for JPG images.
+- `{C}` Image Reader: Added PNG image conversion. 
+```
+
 ## Usage examples
 
 ### Fetch all versions
@@ -259,5 +314,5 @@ else
 ```
 
 This example will automatically create a JSON cache file, which performs
-better than parsing the source markdown file each time, especially for large
+better than parsing the source Markdown file each time, especially for large
 files. 
