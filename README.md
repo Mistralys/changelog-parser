@@ -4,7 +4,7 @@ PHP library to parse Markdown-formatted change log files.
 
 ## Requirements
 
-- PHP >= 7.4
+- PHP >= 8.4
 - JSON extension
 - [Composer](https://getcomposer.org)
 
