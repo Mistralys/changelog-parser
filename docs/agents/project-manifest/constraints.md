@@ -32,6 +32,26 @@ public function getVersions() : array  // @var ChangelogVersion[] in PHPDoc
 public function getVersions()  // No return type
 ```
 
+#### Typed Constants Required (PHP 8.4)
+**Rule**: All class constants must have explicit type declarations
+
+**Rationale**: Improves type safety, enables better IDE support, and catches type errors at compile time
+
+**Example**:
+```php
+// Good
+public const int ERROR_NO_LAST_VERSION_AVAILABLE = 123101;
+public const string SERIALIZED_NUMBER = 'number';
+
+// Bad
+public const ERROR_NO_LAST_VERSION_AVAILABLE = 123101;  // No type
+public const SERIALIZED_NUMBER = 'number';  // No type
+```
+
+**Pattern**:
+- Error codes: `public const int ERROR_*`
+- String constants: `public const string CONSTANT_NAME`
+
 ---
 
 ## Architecture Constraints
@@ -113,23 +133,33 @@ public function requireLatestVersion() : ChangelogVersion  // Throws exception
 ### Constant Naming
 
 #### Error Codes
-**Rule**: `ERROR_*` prefix with descriptive name
+**Rule**: `ERROR_*` prefix with descriptive name, explicitly typed as `int`
 
-**Format**: `public const ERROR_DESCRIPTIVE_NAME = 123xxx;`
+**Format**: `public const int ERROR_DESCRIPTIVE_NAME = 123xxx;`
 
 **Example**:
 ```php
-public const ERROR_NO_LAST_VERSION_AVAILABLE = 123101;
-public const ERROR_UNKNOWN_VERSION_NUMBER = 123102;
+public const int ERROR_NO_LAST_VERSION_AVAILABLE = 123101;
+public const int ERROR_UNKNOWN_VERSION_NUMBER = 123102;
 ```
 
 #### Serialization Keys
-**Rule**: `SERIALIZED_*` prefix for array keys
+**Rule**: `SERIALIZED_*` prefix for array keys, explicitly typed as `string`
 
 **Example**:
 ```php
-public const SERIALIZED_NUMBER = 'number';
-public const SERIALIZED_CHANGES = 'changes';
+public const string SERIALIZED_NUMBER = 'number';
+public const string SERIALIZED_CHANGES = 'changes';
+```
+
+#### Other String Constants
+**Rule**: Descriptive names with appropriate prefixes, explicitly typed as `string`
+
+**Examples**:
+```php
+public const string CHANGE_NEUTRAL = 'neutral';
+public const string LETTER_CONTENT = 'C';
+public const string CHAR_OPTION = '{';
 ```
 
 ---

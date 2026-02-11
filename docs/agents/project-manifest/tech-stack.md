@@ -5,6 +5,7 @@
 ### PHP Version
 - **Minimum**: PHP 8.4
 - **Type System**: Strict type declarations (`declare(strict_types=1)`) used throughout
+- **PHP 8.4 Features**: Typed class constants, `array_key_first()`, `array_find()`
 - **Extensions**: JSON extension required
 
 ### Package Manager
@@ -97,8 +98,9 @@ Mistralys\ChangelogParser\
 
 ### Type Safety
 - Strict type hints on all parameters and return types
+- Explicit type declarations on all class constants (PHP 8.4)
 - No mixed types except in array serialization
-- Leverages PHP 8.4 type system features
+- Leverages PHP 8.4 type system features (typed constants, modern array functions)
 
 ### Immutability Preference
 - Version objects are effectively immutable once constructed

@@ -44,5 +44,5 @@ For new AI agents:
 ## Manifest Maintenance
 
 Last Updated: February 11, 2026  
-Manifest Version: 1.0  
-Codebase Version: Reflects current state as of above date
+Manifest Version: 1.1  
+Codebase Version: Reflects PHP 8.4 upgrade (typed constants, modern array functions)
