@@ -1,3 +1,8 @@
+## v1.1.0 - PHP 8.4
+- Core: Upgraded code for PHP8.4, now minimum requirement.
+- Core: Added agentic coding compatibility.
+- Composer: Added `test` and `analyze` commands.
+
 ## v1.0.3 - Category backticks
 - Parser: Added backtick support for change categories, e.g. \`(C)\`.
 - Docs: Added docs on using change category symbols.
