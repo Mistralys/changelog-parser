@@ -13,7 +13,7 @@ use Mistralys\ChangelogParser\ChangelogVersion;
 
 class JSONChangelogReader extends BaseReader
 {
-    public const ERROR_INVALID_JSON_DATA = 123701;
+    public const int ERROR_INVALID_JSON_DATA = 123701;
 
     /**
      * @var ChangelogVersion[]

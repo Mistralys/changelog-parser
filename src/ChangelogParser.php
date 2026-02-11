@@ -29,8 +29,8 @@ use Mistralys\VersionParser\VersionParser;
  */
 class ChangelogParser extends OperationResult
 {
-    public const ERROR_NO_LAST_VERSION_AVAILABLE = 123101;
-    public const ERROR_UNKNOWN_VERSION_NUMBER = 123102;
+    public const int ERROR_NO_LAST_VERSION_AVAILABLE = 123101;
+    public const int ERROR_UNKNOWN_VERSION_NUMBER = 123102;
 
     /**
      * @var ChangelogVersion[]
@@ -76,7 +76,7 @@ class ChangelogParser extends OperationResult
         $versions = $this->getVersions();
 
         if(!empty($versions)) {
-            return $versions[key($versions)];
+            return $versions[array_key_first($versions)];
         }
 
         return null;
@@ -120,12 +120,10 @@ class ChangelogParser extends OperationResult
     {
         $versions = $this->getVersions();
 
-        foreach($versions as $version)
-        {
-            if($version->getNumber() === $number)
-            {
-                return $version;
-            }
+        $version = array_find($versions, fn($v) => $v->getNumber() === $number);
+        
+        if($version !== null) {
+            return $version;
         }
 
         throw new ChangelogParserException(

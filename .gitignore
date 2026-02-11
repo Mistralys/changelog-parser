@@ -6,3 +6,5 @@ composer.phar
 # composer.lock
 .phpunit.result.cache
 tests/result.txt
+/.phpunit.cache
+docs/agents/project-ledger-schema.md

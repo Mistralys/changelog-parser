@@ -11,23 +11,23 @@ use Mistralys\ChangelogParser\Changes\MiscChange;
 
 abstract class BaseChangeEntry
 {
-    public const ERROR_UNKNOWN_CHANGE_CLASS = 123601;
+    public const int ERROR_UNKNOWN_CHANGE_CLASS = 123601;
 
-    public const CHANGE_NEUTRAL = 'neutral';
-    public const CHANGE_OPTIONAL = 'optional';
-    public const CHANGE_MANDATORY = 'mandatory';
+    public const string CHANGE_NEUTRAL = 'neutral';
+    public const string CHANGE_OPTIONAL = 'optional';
+    public const string CHANGE_MANDATORY = 'mandatory';
 
-    public const SERIALIZED_ID = 'id';
-    public const SERIALIZED_TYPE = 'type';
-    public const SERIALIZED_CATEGORY = 'category';
-    public const SERIALIZED_TEXT = 'text';
+    public const string SERIALIZED_ID = 'id';
+    public const string SERIALIZED_TYPE = 'type';
+    public const string SERIALIZED_CATEGORY = 'category';
+    public const string SERIALIZED_TEXT = 'text';
 
-    public const LETTER_CONTENT = 'C';
-    public const LETTER_GLOBAL = 'G';
-    public const LETTER_EMPTY = ' ';
+    public const string LETTER_CONTENT = 'C';
+    public const string LETTER_GLOBAL = 'G';
+    public const string LETTER_EMPTY = ' ';
 
-    public const CHAR_OPTION = '{';
-    public const CHAR_MANDATORY = '(';
+    public const string CHAR_OPTION = '{';
+    public const string CHAR_MANDATORY = '(';
 
     private string $category;
     private string $text;

@@ -9,11 +9,11 @@ use Mistralys\VersionParser\VersionParser;
 
 class ChangelogVersion
 {
-    public const ERROR_MISSING_SERIALIZED_KEYS = 133501;
-    public const ERROR_INVALID_SERIALIZED_KEY_TYPES = 133502;
+    public const int ERROR_MISSING_SERIALIZED_KEYS = 133501;
+    public const int ERROR_INVALID_SERIALIZED_KEY_TYPES = 133502;
 
-    public const SERIALIZED_NUMBER = 'number';
-    public const SERIALIZED_CHANGES = 'changes';
+    public const string SERIALIZED_NUMBER = 'number';
+    public const string SERIALIZED_CHANGES = 'changes';
 
 
     private VersionParser $versionInfo;
@@ -144,6 +144,30 @@ class ChangelogVersion
 
         foreach($changes as $change)
         {
+            if(!is_array($change)) {
+                throw new ChangelogParserException(
+                    'Invalid change data type in serialized data',
+                    '',
+                    self::ERROR_INVALID_SERIALIZED_KEY_TYPES
+                );
+            }
+            
+            // Validate array structure for PHPStan
+            if(!isset($change[BaseChangeEntry::SERIALIZED_ID], 
+                      $change[BaseChangeEntry::SERIALIZED_TYPE],
+                      $change[BaseChangeEntry::SERIALIZED_CATEGORY],
+                      $change[BaseChangeEntry::SERIALIZED_TEXT]) ||
+               !is_string($change[BaseChangeEntry::SERIALIZED_ID]) ||
+               !is_string($change[BaseChangeEntry::SERIALIZED_TYPE]) ||
+               !is_string($change[BaseChangeEntry::SERIALIZED_CATEGORY]) ||
+               !is_string($change[BaseChangeEntry::SERIALIZED_TEXT])) {
+                throw new ChangelogParserException(
+                    'Invalid change array structure in serialized data',
+                    '',
+                    self::ERROR_INVALID_SERIALIZED_KEY_TYPES
+                );
+            }
+            
             $version->addChange(BaseChangeEntry::fromArray($change));
         }
 

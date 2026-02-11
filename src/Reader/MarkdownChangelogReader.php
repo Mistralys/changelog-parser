@@ -7,13 +7,14 @@ namespace Mistralys\ChangelogParser\Reader;
 use AppUtils\FileHelper\FileInfo;
 use Mistralys\ChangelogParser\BaseChangeEntry;
 use Mistralys\ChangelogParser\BaseReader;
+use Mistralys\ChangelogParser\ChangelogParserException;
 use Mistralys\ChangelogParser\ChangelogVersion;
 use Mistralys\ChangelogParser\Changes\SubHeader;
 use Mistralys\VersionParser\VersionParser;
 
 class MarkdownChangelogReader extends BaseReader
 {
-    public const ERROR_CHANGELOG_FILE_NOT_FOUND = 134701;
+    public const int ERROR_CHANGELOG_FILE_NOT_FOUND = 134701;
 
     /**
      * @var ChangelogVersion[]
